@@ -8,16 +8,15 @@
         <version>22</version>
     </parent>
     <groupId>io.quarkiverse.jdbc</groupId>
-    <artifactId>quarkus-jdbc-db2-parent</artifactId>
+    <artifactId>quarkus-db2-parent</artifactId>
     <version>999-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Quarkus - JDBC - DB2 - Parent</name>
+    <name>Quarkus - DB2 - Parent</name>
 
     <modules>
-        <module>extensions/jdbc-db2/deployment</module>
-        <module>extensions/jdbc-db2/runtime</module>
-        <module>extensions/flyway-db2/deployment</module>
-        <module>extensions/flyway-db2/runtime</module>
+        <module>extensions/jdbc-db2</module>
+        <module>extensions/flyway-db2</module>
+        <module>extensions/reactive-db2-client</module>
         <module>extensions/devservices</module>
     </modules>
 
@@ -29,6 +28,12 @@
 
     <properties>
         <quarkus.version>999-SNAPSHOT</quarkus.version>
+        <!-- DB2 JDBC driver version. Managed here as it may be dropped from the Quarkus BOM. -->
+        <db2-jdbc.version>12.1.5.0</db2-jdbc.version>
+        <!-- DB2 Dev Services / container settings, mirrored from the Quarkus build-parent -->
+        <db2.version>12.1</db2.version>
+        <db2.image>icr.io/db2_community/db2:${db2.version}.5.0</db2.image>
+        <db2.default.version>12.1</db2.default.version>
     </properties>
 
     <dependencyManagement>
@@ -64,6 +69,23 @@
                 <groupId>io.quarkiverse.jdbc</groupId>
                 <artifactId>quarkus-devservices-db2</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkiverse.jdbc</groupId>
+                <artifactId>quarkus-reactive-db2-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.quarkiverse.jdbc</groupId>
+                <artifactId>quarkus-reactive-db2-client-deployment</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- DB2 JDBC driver. Managed explicitly so the build keeps working if the
+                 Quarkus BOM stops managing com.ibm.db2:jcc. -->
+            <dependency>
+                <groupId>com.ibm.db2</groupId>
+                <artifactId>jcc</artifactId>
+                <version>${db2-jdbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.assertj</groupId>

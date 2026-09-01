@@ -6,14 +6,14 @@ TIP: Describe what the extension does here.
 
 == Installation
 
-To use this extension, add the `io.quarkiverse.jdbc-db2:quarkus-jdbc-db2` dependency to your build file.
+To use this extension, add the `io.quarkiverse.jdbc:quarkus-jdbc-db2` dependency to your build file.
 
 With Maven, add the following to your `pom.xml`:
 
 [source,xml,subs=attributes+]
 ----
 <dependency>
-    <groupId>io.quarkiverse.jdbc-db2</groupId>
+    <groupId>io.quarkiverse.jdbc</groupId>
     <artifactId>quarkus-jdbc-db2</artifactId>
     <version>{project-version}</version>
 </dependency>
@@ -23,7 +23,7 @@ With Gradle, add the following to your `build.gradle`:
 
 [source,gradle,subs=attributes+]
 ----
-implementation("io.quarkiverse.jdbc-db2:quarkus-jdbc-db2:{project-version}")
+implementation("io.quarkiverse.jdbc:quarkus-jdbc-db2:{project-version}")
 ----
 
 == Usage
