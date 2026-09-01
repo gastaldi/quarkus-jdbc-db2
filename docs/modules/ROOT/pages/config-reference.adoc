@@ -1,0 +1,5 @@
+= Configuration Reference
+
+include::./includes/attributes.adoc[]
+
+include::includes/quarkus-jdbc-db2.adoc[leveloffset=+1, opts=optional]
